@@ -37,7 +37,7 @@
     "demo:assets": "node scripts/generate-demo-room.mjs",
     "model:top-view": "node --import tsx scripts/generate-room-top-view.ts",
     "auth:setup": "node scripts/setup-local-auth.mjs",
-    "test:agent": "tsx --test --test-isolation=none --test-concurrency=1 agent/**/*.test.ts",
+    "test:agent": "node scripts/run-agent-tests.mjs",
     "build:android-web": "vite build --config vite.offline.config.ts",
     "android:debug": "npm run build:android-web && android\\gradlew.bat -p android lintDebug assembleDebug",
     "android:release": "npm run build:android-web && android\\gradlew.bat -p android lintRelease assembleRelease",
