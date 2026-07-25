@@ -1,0 +1,16 @@
+{
+  "services": [
+    {
+      "service_id": "Environment",
+      "properties": {
+        "temperature": 25,
+        "humidity": 60,
+        "lightRaw": 2345,
+        "lightPercent": 57,
+        "TVOC": 0.123,
+        "ch2o": 0.008,
+        "co2": 612
+      }
+    }
+  ]
+}

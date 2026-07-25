@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">危化智巡</string>
+    <string name="offline_title">正在启动控制中心</string>
+    <string name="offline_loading">正在读取应用内资源…</string>
+    <string name="offline_hint">应用资源与数字孪生模型保存在本机；实时数据由当前设备直接读取华为云，小车通过局域网连接。</string>
+    <string name="offline_load_failed">本地应用资源读取失败，请重试或重新安装 APK。</string>
+    <string name="retry">重试</string>
+    <string name="exit_app">退出</string>
+    <string name="file_chooser_title">选择文件</string>
+    <string name="download_saved">文件已保存：%1$s</string>
+    <string name="download_failed">文件保存失败</string>
+</resources>

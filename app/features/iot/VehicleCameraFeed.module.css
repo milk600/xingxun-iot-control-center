@@ -1,0 +1,145 @@
+.root {
+  --camera-state: #98a2b3;
+  display: flex;
+  min-width: 0;
+  overflow: hidden;
+  flex-direction: column;
+  color: #172033;
+  background: #fff;
+  border: 1px solid #e3e8ef;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgb(15 23 42 / 7%);
+}
+
+.state_live { --camera-state: #20a963; }
+.state_connecting { --camera-state: #3478f6; }
+.state_stale { --camera-state: #d58422; }
+.state_offline,
+.state_empty { --camera-state: #98a2b3; }
+
+.header {
+  display: flex;
+  min-height: 68px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #fff;
+  border-bottom: 1px solid #e3e8ef;
+}
+
+.titleBlock { display: flex; min-width: 0; align-items: center; gap: 10px; }
+.titleIcon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  place-items: center;
+  color: #286ce1;
+  background: #edf4ff;
+  border-radius: 12px;
+}
+.titleBlock div { min-width: 0; }
+.titleBlock h3 { margin: 0; color: #101828; font-size: 15px; line-height: 20px; }
+.titleBlock p { margin: 1px 0 0; color: #7b8798; font-size: 12px; line-height: 17px; }
+
+.headerActions { display: flex; align-items: center; gap: 8px; }
+
+.captureButton,
+.fullscreenButton {
+  display: inline-grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  place-items: center;
+  color: #536175;
+  background: #f7f8fa;
+  border: 1px solid #e5e9ef;
+  border-radius: 11px;
+  cursor: pointer;
+  transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+.captureButton { color: #245fbe; background: #edf4ff; border-color: #d4e3fb; }
+.captureButton:hover:not(:disabled),
+.fullscreenButton:hover { color: #245fbe; background: #f0f5fd; border-color: #cddcf2; }
+.captureButton:disabled { cursor: not-allowed; color: #9ba6b5; background: #f7f8fa; border-color: #e5e9ef; opacity: .72; }
+.captureButton:focus-visible,
+.fullscreenButton:focus-visible { outline: 2px solid #3478f6; outline-offset: 2px; }
+
+.stage {
+  position: relative;
+  display: grid;
+  min-height: 500px;
+  flex: 1;
+  place-items: center;
+  overflow: hidden;
+  background: #030609;
+}
+.image {
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 180ms ease;
+  user-select: none;
+}
+.imageVisible { opacity: 1; }
+.state_stale .image,
+.state_offline .image { opacity: .38; }
+
+.stateOverlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 10px;
+  color: #d9e1ec;
+  background: rgb(3 6 9 / 58%);
+  text-align: center;
+}
+.stateOverlay span {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  color: #c7d1de;
+  background: rgb(255 255 255 / 8%);
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 50%;
+}
+.stateOverlay strong { font-size: 13px; font-weight: 650; }
+
+.footer {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 16px;
+  background: #fff;
+  border-top: 1px solid #e3e8ef;
+  font-size: 12px;
+}
+.status { display: inline-flex; align-items: center; gap: 7px; color: #59677b; font-weight: 650; }
+.status i { width: 8px; height: 8px; background: var(--camera-state); border-radius: 50%; }
+.metadata { color: #7b8798; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+.root:fullscreen { width: 100vw; height: 100vh; border: 0; border-radius: 0; }
+.root:fullscreen .stage { min-height: 0; }
+
+@media (max-width: 620px) {
+  .root { border-radius: 16px; }
+  .header { min-height: 64px; padding: 10px 12px; }
+  .captureButton,
+  .fullscreenButton { width: 44px; height: 44px; flex-basis: 44px; }
+  .stage { min-height: 0; aspect-ratio: 4 / 3; }
+  .footer { min-height: 52px; padding-inline: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image,
+  .captureButton,
+  .fullscreenButton { transition: none; }
+}

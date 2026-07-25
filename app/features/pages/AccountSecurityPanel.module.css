@@ -1,0 +1,144 @@
+.panel {
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #e1e7ee;
+  border-radius: 18px;
+  box-shadow: 0 6px 22px rgb(24 42 72 / 4.5%);
+}
+
+.panel > header {
+  display: flex;
+  min-height: 82px;
+  align-items: center;
+  gap: 11px;
+  padding: 15px 18px;
+  background: #f8f9fb;
+  border-bottom: 1px solid #e6ebf0;
+}
+
+.panel > header > span,
+.sectionTitle > span {
+  display: grid;
+  width: 43px;
+  height: 43px;
+  flex: 0 0 43px;
+  place-items: center;
+  color: #3478ea;
+  background: #eaf2ff;
+  border-radius: 14px;
+}
+
+.panel h2,
+.panel h3 { margin: 0; color: #172136; }
+.panel h2 { font-size: 16px; }
+.panel header small { display: block; margin-top: 3px; color: #7b899b; font-size: 12px; }
+
+.profileSection {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 28px;
+  padding: 24px;
+}
+
+.avatarColumn { display: flex; align-items: center; flex-direction: column; gap: 9px; }
+.avatar { display: grid; width: 104px; height: 104px; place-items: center; overflow: hidden; color: #fff; background: linear-gradient(145deg, #498af8, #2367dc); border: 5px solid #f0f5ff; border-radius: 50%; box-shadow: 0 10px 28px rgb(39 106 223 / 20%); }
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+.avatar strong { font-size: 34px; line-height: 1; }
+.avatarUpload,
+.removeAvatar { display: inline-flex; min-height: 36px; align-items: center; gap: 6px; padding: 0 9px; color: #246bdd; background: #edf4ff; border: 0; border-radius: 10px; font-size: 12px; font-weight: 700; cursor: pointer; }
+.avatarUpload input { position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; }
+.removeAvatar { min-height: 32px; color: #a14841; background: transparent; }
+
+.profileForm,
+.passwordSection form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-content: start; gap: 14px; }
+.profileForm label,
+.passwordField { display: grid; gap: 7px; color: #566277; font-size: 12px; font-weight: 700; }
+.profileForm input,
+.passwordField > span:last-child {
+  min-height: 48px;
+  color: #172136;
+  background: #f7f8fa;
+  border: 1px solid #e1e6ec;
+  border-radius: 12px;
+}
+.profileForm input { width: 100%; padding: 0 13px; outline: 0; font: inherit; font-size: 14px; }
+.profileForm input:focus { background: #fff; border-color: #6b9ff6; box-shadow: 0 0 0 3px rgb(52 120 246 / 11%); }
+.profileForm input[readonly] { color: #7d8999; }
+
+.feedback { min-height: 20px; margin: 0; color: #b34239; font-size: 12px; line-height: 20px; }
+.profileForm .feedback { align-self: center; }
+.primaryButton,
+.secondaryButton,
+.cancelButton { display: inline-flex; min-height: 42px; align-items: center; justify-content: center; padding: 0 15px; border-radius: 11px; font: inherit; font-size: 12px; font-weight: 750; cursor: pointer; }
+.primaryButton { color: #fff; background: #3478ef; border: 1px solid #3478ef; }
+.secondaryButton { color: #2868cd; background: #edf4ff; border: 1px solid #dce9ff; }
+.cancelButton { color: #5e6b7e; background: #f5f7f9; border: 1px solid #e1e6ec; }
+.primaryButton:disabled,
+.secondaryButton:disabled { cursor: default; opacity: .58; }
+
+.statusGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 0 24px 24px; }
+.statusGrid > div { display: grid; grid-template-columns: 38px minmax(0, 1fr); align-items: center; gap: 10px; padding: 13px; background: #f7f9fb; border: 1px solid #e5eaf0; border-radius: 14px; }
+.statusGrid > div > span { display: grid; width: 38px; height: 38px; place-items: center; color: #2c75e5; background: #eaf2ff; border-radius: 12px; }
+.statusGrid p { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; margin: 0; }
+.statusGrid small { color: #7b8798; font-size: 12px; }
+.statusGrid strong { color: #26344a; font-size: 12px; }
+.statusGrid em { grid-column: 1 / -1; overflow: hidden; color: #8b96a6; font-size: 12px; font-style: normal; text-overflow: ellipsis; white-space: nowrap; }
+
+.passwordSection { padding: 22px 24px 25px; border-top: 1px solid #edf1f4; }
+.sectionTitle { display: flex; align-items: center; gap: 11px; margin-bottom: 17px; }
+.sectionTitle > span { width: 40px; height: 40px; flex-basis: 40px; }
+.sectionTitle h3 { font-size: 14px; }
+.sectionTitle p { margin: 3px 0 0; color: #8995a5; font-size: 12px; }
+.passwordSection form { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.passwordField > span:last-child { display: grid; grid-template-columns: minmax(0, 1fr) 40px; align-items: center; overflow: hidden; }
+.passwordField input { min-width: 0; height: 46px; padding: 0 12px; background: transparent; border: 0; outline: 0; font: inherit; font-size: 14px; }
+.passwordField > span:last-child:focus-within { background: #fff; border-color: #6b9ff6; box-shadow: 0 0 0 3px rgb(52 120 246 / 11%); }
+.passwordField button { display: grid; width: 38px; height: 38px; place-items: center; color: #7a8799; background: transparent; border: 0; border-radius: 10px; cursor: pointer; }
+.passwordSection .feedback { grid-column: 1 / 3; align-self: center; }
+.passwordSection .secondaryButton { grid-column: 3; }
+
+.cropBackdrop { position: fixed; z-index: 1200; inset: 0; display: grid; place-items: center; padding: 20px; background: rgb(18 28 44 / 34%); backdrop-filter: blur(6px); animation: fadeIn 180ms ease both; }
+.cropDialog { display: grid; width: min(100%, 430px); gap: 18px; padding: 24px; background: #fff; border: 1px solid #e1e6ec; border-radius: 24px; box-shadow: 0 30px 90px rgb(14 26 45 / 25%); animation: dialogIn 240ms cubic-bezier(.16, 1, .3, 1) both; }
+.cropDialog header { display: flex; align-items: center; justify-content: space-between; }
+.cropDialog header > div { display: flex; align-items: center; gap: 9px; color: #3478ef; }
+.cropDialog h2 { font-size: 18px; }
+.cropDialog header > button { display: grid; width: 40px; height: 40px; place-items: center; color: #687587; background: #f3f5f7; border: 0; border-radius: 50%; cursor: pointer; }
+.cropViewport { position: relative; width: 256px; height: 256px; margin: 0 auto; overflow: hidden; background: #e9edf2; border-radius: 18px; cursor: grab; touch-action: none; }
+.cropViewport:active { cursor: grabbing; }
+.cropViewport img { position: absolute; top: 50%; left: 50%; max-width: none; user-select: none; pointer-events: none; }
+.cropViewport > span { position: absolute; inset: 0; border: 1px solid rgb(255 255 255 / 80%); border-radius: 50%; box-shadow: 0 0 0 80px rgb(13 22 36 / 48%); pointer-events: none; }
+.zoomControl { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 10px; color: #627085; font-size: 12px; font-weight: 700; }
+.zoomControl input { width: 100%; accent-color: #3478ef; }
+.cropDialog footer { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+
+.panel button:focus-visible,
+.panel input:focus-visible,
+.cropDialog button:focus-visible { outline: 2px solid #3478f6; outline-offset: 2px; }
+
+@keyframes fadeIn { from { opacity: 0; } }
+@keyframes dialogIn { from { opacity: 0; transform: translateY(12px) scale(.985); } }
+
+@media (max-width: 720px) {
+  .profileSection { grid-template-columns: 1fr; gap: 18px; }
+  .avatarColumn { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+  .avatar { width: 88px; height: 88px; flex: 0 0 88px; }
+  .profileForm,
+  .passwordSection form { grid-template-columns: 1fr; }
+  .profileForm .feedback,
+  .profileForm .primaryButton,
+  .passwordSection .feedback,
+  .passwordSection .secondaryButton { grid-column: 1; }
+  .statusGrid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 420px) {
+  .profileSection,
+  .passwordSection { padding-inline: 18px; }
+  .statusGrid { padding-inline: 18px; }
+  .cropViewport { width: min(256px, calc(100vw - 92px)); height: min(256px, calc(100vw - 92px)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cropBackdrop,
+  .cropDialog { animation: none; }
+}

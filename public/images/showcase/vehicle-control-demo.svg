@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="title">
+  <title id="title">合成巡检车辆控制界面示意图</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1440" y2="900"><stop stop-color="#f7faff"/><stop offset="1" stop-color="#edf2f8"/></linearGradient>
+    <linearGradient id="map" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#17283e"/><stop offset="1" stop-color="#0c1422"/></linearGradient>
+    <filter id="s"><feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#365676" flood-opacity=".13"/></filter>
+  </defs>
+  <rect width="1440" height="900" fill="url(#bg)"/>
+  <text x="50" y="74" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="36" font-weight="700" fill="#182338">小车遥控</text>
+  <text x="50" y="108" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="15" fill="#7d8a9c">合成场地图 · 演示控制链路</text>
+  <rect x="50" y="142" width="820" height="708" rx="28" fill="#fff" filter="url(#s)"/>
+  <rect x="74" y="196" width="772" height="626" rx="22" fill="url(#map)"/>
+  <g transform="translate(118 236)">
+    <rect width="684" height="540" rx="16" fill="#10233a" stroke="#2c496a" stroke-width="3"/>
+    <g stroke="#25425f" stroke-width="2"><path d="M0 108H684M0 216H684M0 324H684M0 432H684"/><path d="M114 0V540M228 0V540M342 0V540M456 0V540M570 0V540"/></g>
+    <path d="M92 450C130 368 206 406 250 318S372 262 428 204 530 188 592 92" fill="none" stroke="#4b8df8" stroke-width="9" stroke-linecap="round" stroke-dasharray="18 12"/>
+    <g transform="translate(386 198)">
+      <rect x="-38" y="-28" width="76" height="56" rx="15" fill="#68d7c4" stroke="#dffff8" stroke-width="3"/>
+      <circle cx="-24" cy="31" r="10" fill="#1e3147"/><circle cx="24" cy="31" r="10" fill="#1e3147"/>
+      <path d="M0-43v14M-12-43h24" stroke="#dffff8" stroke-width="4" stroke-linecap="round"/>
+    </g>
+    <g fill="#fff" stroke="#4b8df8" stroke-width="4"><circle cx="92" cy="450" r="12"/><circle cx="250" cy="318" r="12"/><circle cx="428" cy="204" r="12"/><circle cx="592" cy="92" r="12"/></g>
+  </g>
+  <rect x="900" y="142" width="490" height="312" rx="28" fill="#fff" filter="url(#s)"/>
+  <text x="930" y="188" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="20" font-weight="700" fill="#1b2940">车载摄像头</text>
+  <rect x="930" y="212" width="430" height="210" rx="18" fill="#0a111d"/>
+  <path d="M980 365 1090 270l84 78 72-58 78 75" fill="none" stroke="#2b4f71" stroke-width="7"/>
+  <circle cx="1145" cy="318" r="34" fill="none" stroke="#67d6c4" stroke-width="4"/><path d="M1145 294v48M1121 318h48" stroke="#67d6c4" stroke-width="3"/>
+  <rect x="900" y="484" width="490" height="366" rx="28" fill="#fff" filter="url(#s)"/>
+  <text x="930" y="530" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="20" font-weight="700" fill="#1b2940">手动驾驶</text>
+  <g transform="translate(1040 570)" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="20" text-anchor="middle">
+    <rect x="90" y="0" width="82" height="72" rx="18" fill="#edf3fb"/><text x="131" y="44" fill="#52637a">↑</text>
+    <rect x="0" y="82" width="82" height="72" rx="18" fill="#edf3fb"/><text x="41" y="126" fill="#52637a">←</text>
+    <rect x="90" y="82" width="82" height="72" rx="18" fill="#fff0ee" stroke="#dc7168"/><text x="131" y="126" fill="#c6534b">停</text>
+    <rect x="180" y="82" width="82" height="72" rx="18" fill="#edf3fb"/><text x="221" y="126" fill="#52637a">→</text>
+    <rect x="90" y="164" width="82" height="72" rx="18" fill="#edf3fb"/><text x="131" y="208" fill="#52637a">↓</text>
+  </g>
+  <rect x="930" y="794" width="430" height="32" rx="16" fill="#e8eef7"/><rect x="930" y="794" width="238" height="32" rx="16" fill="#4b8df8"/>
+</svg>

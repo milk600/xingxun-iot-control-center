@@ -1,0 +1,204 @@
+plugins {
+    id 'com.android.application'
+}
+
+def authProperties = new Properties()
+def authPropertiesFile = rootProject.file('auth.properties')
+if (authPropertiesFile.exists()) {
+    authPropertiesFile.withInputStream { authProperties.load(it) }
+}
+def quotedBuildValue = { value -> '"' + String.valueOf(value).replace('\\', '\\\\').replace('"', '\\"') + '"' }
+
+def localEnv = [:]
+def localEnvFile = rootProject.file('../.env.local')
+if (localEnvFile.exists()) {
+    localEnvFile.eachLine('UTF-8') { line ->
+        def trimmed = line.trim()
+        if (trimmed && !trimmed.startsWith('#') && trimmed.contains('=')) {
+            def splitAt = trimmed.indexOf('=')
+            def key = trimmed.substring(0, splitAt).trim()
+            def value = trimmed.substring(splitAt + 1).trim()
+            if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+                value = value.substring(1, value.length() - 1)
+            }
+            localEnv[key] = value
+        }
+    }
+}
+
+def configValue = { String key, String fallback = '' ->
+    def processValue = System.getenv(key)
+    if (processValue != null && !processValue.trim().isEmpty()) return processValue.trim()
+    def fileValue = localEnv[key]
+    return fileValue == null || String.valueOf(fileValue).trim().isEmpty()
+            ? fallback
+            : String.valueOf(fileValue).trim()
+}
+
+def parseCsvRow = { String line ->
+    def cells = []
+    def current = new StringBuilder()
+    def quoted = false
+    for (int index = 0; index < line.length(); index++) {
+        def character = line.charAt(index)
+        if (character == '"') {
+            if (quoted && index + 1 < line.length() && line.charAt(index + 1) == '"') {
+                current.append('"')
+                index++
+            } else {
+                quoted = !quoted
+            }
+        } else if (character == ',' && !quoted) {
+            cells.add(current.toString().trim())
+            current.setLength(0)
+        } else {
+            current.append(character)
+        }
+    }
+    cells.add(current.toString().trim())
+    return cells
+}
+
+def readCredentialCsv = { String pathValue ->
+    if (!pathValue) return [:]
+    def file = rootProject.file(pathValue)
+    if (!file.exists()) file = new File(pathValue)
+    if (!file.exists()) return [:]
+    def rows = file.readLines('UTF-8').findAll { it.trim() }
+    if (rows.isEmpty()) return [:]
+    def headers = parseCsvRow(rows[0]).collect { it.replace('\uFEFF', '').replaceAll(/[\s_-]/, '').toLowerCase() }
+    def result = [:]
+    if (rows.size() >= 2) {
+        def values = parseCsvRow(rows[1])
+        headers.eachWithIndex { header, index ->
+            if (index < values.size()) result[header] = values[index]
+        }
+    }
+    // DashScope's downloaded credential file is a vertical key/value CSV,
+    // while Huawei's export is commonly a header/value table. Accept both.
+    rows.each { row ->
+        def cells = parseCsvRow(row)
+        if (cells.size() >= 2) {
+            def key = cells[0].replace('\uFEFF', '').replaceAll(/[\s_-]/, '').toLowerCase()
+            if (key && !['key', 'name', 'field'].contains(key)) result[key] = cells[1]
+        }
+    }
+    return result
+}
+
+def huaweiCsv = readCredentialCsv(configValue('HUAWEI_CREDENTIALS_FILE'))
+def dashScopeCsv = readCredentialCsv(configValue('DASHSCOPE_CREDENTIALS_FILE'))
+def huaweiAk = configValue('HUAWEICLOUD_SDK_AK', huaweiCsv.accesskeyid ?: huaweiCsv.ak ?: '')
+def huaweiSk = configValue('HUAWEICLOUD_SDK_SK', huaweiCsv.secretaccesskey ?: huaweiCsv.sk ?: '')
+def dashScopeKey = configValue('DASHSCOPE_API_KEY', dashScopeCsv.apikey ?: '')
+def dashScopeWorkspace = configValue('DASHSCOPE_WORKSPACE_ID', dashScopeCsv.workspaceid ?: '')
+
+// Debug builds may use ignored local credentials for on-device integration
+// testing. Release builds are deliberately credential-free: long-lived cloud
+// keys must stay behind a trusted gateway and must never ship inside an APK.
+def configureCredentialFields = { buildType, boolean includeLocalCredentials ->
+    def localValue = { value -> includeLocalCredentials ? value : '' }
+    buildType.buildConfigField "String", "XINGXUN_AUTH_USERNAME",
+            quotedBuildValue(localValue(authProperties.getProperty('username', '')))
+    buildType.buildConfigField "String", "XINGXUN_AUTH_DISPLAY_NAME",
+            quotedBuildValue(localValue(authProperties.getProperty('displayName', '')))
+    buildType.buildConfigField "String", "XINGXUN_AUTH_SALT",
+            quotedBuildValue(localValue(authProperties.getProperty('salt', '')))
+    buildType.buildConfigField "String", "XINGXUN_AUTH_HASH",
+            quotedBuildValue(localValue(authProperties.getProperty('hash', '')))
+    buildType.buildConfigField "int", "XINGXUN_AUTH_ITERATIONS",
+            includeLocalCredentials ? authProperties.getProperty('iterations', '310000') : '310000'
+    buildType.buildConfigField "String", "HUAWEI_IOTDA_ENDPOINT",
+            quotedBuildValue(localValue(configValue('HUAWEI_IOTDA_ENDPOINT')))
+    buildType.buildConfigField "String", "HUAWEI_IOTDA_PROJECT_ID",
+            quotedBuildValue(localValue(configValue('HUAWEI_IOTDA_PROJECT_ID')))
+    buildType.buildConfigField "String", "HUAWEI_IOTDA_REGION_ID",
+            quotedBuildValue(includeLocalCredentials
+                    ? configValue('HUAWEI_IOTDA_REGION_ID', configValue('HUAWEI_IOTDA_PROJECT_NAME', 'cn-north-4'))
+                    : 'cn-north-4')
+    buildType.buildConfigField "String", "HUAWEI_IOTDA_DEVICE_ID",
+            quotedBuildValue(localValue(configValue('HUAWEI_IOTDA_DEVICE_ID')))
+    buildType.buildConfigField "String", "HUAWEI_IOTDA_SERVICE_ID",
+            quotedBuildValue(includeLocalCredentials
+                    ? configValue('HUAWEI_IOTDA_SERVICE_ID', 'Environment')
+                    : 'Environment')
+    buildType.buildConfigField "String", "HUAWEI_IOTDA_INSTANCE_ID",
+            quotedBuildValue(localValue(configValue('HUAWEI_IOTDA_INSTANCE_ID')))
+    buildType.buildConfigField "String", "HUAWEI_IOTDA_AK",
+            quotedBuildValue(localValue(huaweiAk))
+    buildType.buildConfigField "String", "HUAWEI_IOTDA_SK",
+            quotedBuildValue(localValue(huaweiSk))
+    buildType.buildConfigField "long", "HUAWEI_IOTDA_STALE_AFTER_MS",
+            (includeLocalCredentials ? configValue('HUAWEI_IOTDA_STALE_AFTER_MS', '30000') : '30000') + 'L'
+    buildType.buildConfigField "long", "HUAWEI_IOTDA_OFFLINE_AFTER_MS",
+            (includeLocalCredentials ? configValue('HUAWEI_IOTDA_OFFLINE_AFTER_MS', '90000') : '90000') + 'L'
+    buildType.buildConfigField "String", "DEEPSEEK_API_KEY",
+            quotedBuildValue(localValue(configValue('DEEPSEEK_API_KEY')))
+    buildType.buildConfigField "String", "DEEPSEEK_BASE_URL",
+            quotedBuildValue(includeLocalCredentials
+                    ? configValue('DEEPSEEK_BASE_URL', 'https://api.deepseek.com')
+                    : 'https://api.deepseek.com')
+    buildType.buildConfigField "String", "DASHSCOPE_API_KEY",
+            quotedBuildValue(localValue(dashScopeKey))
+    buildType.buildConfigField "String", "DASHSCOPE_WORKSPACE_ID",
+            quotedBuildValue(localValue(dashScopeWorkspace))
+    buildType.buildConfigField "String", "FUN_ASR_MODEL",
+            quotedBuildValue(includeLocalCredentials
+                    ? configValue('FUN_ASR_MODEL', 'fun-asr-realtime')
+                    : 'fun-asr-realtime')
+    buildType.buildConfigField "String", "FUN_ASR_WS_URL",
+            quotedBuildValue(includeLocalCredentials
+                    ? configValue('FUN_ASR_WS_URL', dashScopeWorkspace
+                            ? "wss://${dashScopeWorkspace}.cn-beijing.maas.aliyuncs.com/api-ws/v1/inference"
+                            : 'wss://dashscope.aliyuncs.com/api-ws/v1/inference')
+                    : 'wss://dashscope.aliyuncs.com/api-ws/v1/inference')
+    buildType.buildConfigField "String", "JETSON_WS_URL",
+            quotedBuildValue(includeLocalCredentials
+                    ? configValue('JETSON_WS_URL', 'ws://127.0.0.1:8765')
+                    : 'ws://127.0.0.1:8765')
+}
+
+android {
+    compileSdkVersion 32
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.xingxun.iotcontrol"
+        minSdkVersion 21
+        targetSdkVersion 32
+        versionCode 11
+        versionName "2.7.0"
+    }
+
+    aaptOptions {
+        noCompress 'ply'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        debug {
+            configureCredentialFields(delegate, true)
+        }
+        release {
+            configureCredentialFields(delegate, false)
+            debuggable false
+            minifyEnabled false
+        }
+    }
+
+    applicationVariants.all { variant ->
+        if (variant.buildType.name == "release") {
+            variant.outputs.all {
+                outputFileName = "XingXun-IoT-v${defaultConfig.versionName}.apk"
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.squareup.okhttp3:okhttp:3.14.9'
+}

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="title">
+  <title id="title">合成环境监测界面示意图</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1440" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f8fbff"/><stop offset="1" stop-color="#edf3fb"/>
+    </linearGradient>
+    <linearGradient id="line" x1="335" y1="610" x2="1090" y2="480" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2f73ed"/><stop offset=".5" stop-color="#43b6a4"/><stop offset="1" stop-color="#8b6ee8"/>
+    </linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="#375b84" flood-opacity=".12"/></filter>
+  </defs>
+  <rect width="1440" height="900" fill="url(#bg)"/>
+  <rect x="28" y="26" width="205" height="848" rx="28" fill="#fff" filter="url(#shadow)"/>
+  <rect x="58" y="58" width="50" height="50" rx="15" fill="#3678ee"/>
+  <path d="M75 84a8 8 0 0 1 16 0M68 84a15 15 0 0 1 30 0" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+  <text x="120" y="83" font-size="24" font-weight="700" fill="#17243a">危化智巡</text>
+  <text x="120" y="105" font-size="13" fill="#7d8ba1">IoT CONTROL CENTER</text>
+  <g font-family="Arial,'Microsoft YaHei',sans-serif" font-size="17" fill="#637188">
+    <text x="62" y="182">控制概览</text><text x="62" y="240">空间孪生</text><text x="62" y="298">小车遥控</text>
+    <rect x="46" y="328" width="169" height="50" rx="14" fill="#e9f1ff"/><text x="62" y="359" fill="#2367dc" font-weight="700">数据监测</text>
+    <text x="62" y="430">告警管理</text><text x="62" y="488">连接管理</text><text x="62" y="546">系统设置</text>
+  </g>
+  <text x="276" y="80" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="36" font-weight="700" fill="#182338">数据监测</text>
+  <text x="276" y="113" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="16" fill="#7c899d">安全演示数据 · 六路环境感知</text>
+  <g filter="url(#shadow)" font-family="Arial,'Microsoft YaHei',sans-serif">
+    <g transform="translate(276 156)"><rect width="172" height="150" rx="22" fill="#fff"/><circle cx="32" cy="34" r="18" fill="#e9f1ff"/><text x="22" y="42" font-size="22" fill="#2f73ed">T</text><text x="22" y="80" font-size="15" fill="#637188">环境温度</text><text x="22" y="118" font-size="34" font-weight="700" fill="#182338">23.8°</text></g>
+    <g transform="translate(466 156)"><rect width="172" height="150" rx="22" fill="#fff"/><circle cx="32" cy="34" r="18" fill="#e5f8f5"/><text x="22" y="42" font-size="22" fill="#25a28f">H</text><text x="22" y="80" font-size="15" fill="#637188">环境湿度</text><text x="22" y="118" font-size="34" font-weight="700" fill="#182338">45%</text></g>
+    <g transform="translate(656 156)"><rect width="172" height="150" rx="22" fill="#fff"/><circle cx="32" cy="34" r="18" fill="#edf8eb"/><text x="19" y="42" font-size="18" fill="#5a9e45">CO₂</text><text x="22" y="80" font-size="15" fill="#637188">二氧化碳</text><text x="22" y="118" font-size="34" font-weight="700" fill="#182338">586</text></g>
+    <g transform="translate(846 156)"><rect width="172" height="150" rx="22" fill="#fff"/><circle cx="32" cy="34" r="18" fill="#fff1df"/><text x="18" y="42" font-size="15" fill="#d08127">VOC</text><text x="22" y="80" font-size="15" fill="#637188">TVOC</text><text x="22" y="118" font-size="30" font-weight="700" fill="#182338">0.12</text></g>
+    <g transform="translate(1036 156)"><rect width="172" height="150" rx="22" fill="#fff"/><circle cx="32" cy="34" r="18" fill="#fdeceb"/><text x="19" y="42" font-size="16" fill="#c75b55">CH₂O</text><text x="22" y="80" font-size="15" fill="#637188">甲醛</text><text x="22" y="118" font-size="30" font-weight="700" fill="#182338">0.03</text></g>
+    <g transform="translate(1226 156)"><rect width="172" height="150" rx="22" fill="#fff"/><circle cx="32" cy="34" r="18" fill="#f0ecff"/><text x="25" y="42" font-size="19" fill="#7a60d4">L</text><text x="22" y="80" font-size="15" fill="#637188">环境光照</text><text x="22" y="118" font-size="34" font-weight="700" fill="#182338">68%</text></g>
+  </g>
+  <rect x="276" y="340" width="1122" height="494" rx="28" fill="#fff" filter="url(#shadow)"/>
+  <text x="310" y="390" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="22" font-weight="700" fill="#1d2940">实时趋势</text>
+  <text x="310" y="420" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="14" fill="#8794a7">当前会话使用合成样本，不包含真实场地数据</text>
+  <g stroke="#e8edf4" stroke-width="2"><path d="M330 490H1350"/><path d="M330 570H1350"/><path d="M330 650H1350"/><path d="M330 730H1350"/></g>
+  <path d="M335 680C430 640 490 665 560 610S720 590 795 545 920 580 1015 500 1185 520 1340 455" fill="none" stroke="url(#line)" stroke-width="8" stroke-linecap="round"/>
+  <g fill="#2f73ed"><circle cx="560" cy="610" r="8"/><circle cx="795" cy="545" r="8"/><circle cx="1015" cy="500" r="8"/><circle cx="1340" cy="455" r="8"/></g>
+</svg>

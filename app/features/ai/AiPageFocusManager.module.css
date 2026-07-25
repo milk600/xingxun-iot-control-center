@@ -1,0 +1,45 @@
+.focusTarget {
+  scroll-margin-block: clamp(92px, 12vh, 148px);
+  outline: 3px solid #2f76f6;
+  outline-offset: 5px;
+  box-shadow: 0 0 0 7px rgb(47 118 246 / 16%), 0 16px 42px rgb(24 79 166 / 16%) !important;
+  animation: ai-region-focus-pulse 780ms cubic-bezier(.22, 1, .36, 1) 6 alternate;
+}
+
+.liveRegion {
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@keyframes ai-region-focus-pulse {
+  from {
+    outline-color: rgb(47 118 246 / 58%);
+    box-shadow: 0 0 0 3px rgb(47 118 246 / 10%), 0 10px 28px rgb(24 79 166 / 10%);
+  }
+  to {
+    outline-color: #2f76f6;
+    box-shadow: 0 0 0 8px rgb(47 118 246 / 20%), 0 18px 46px rgb(24 79 166 / 18%);
+  }
+}
+
+@keyframes ai-region-focus-fade {
+  0%, 84% {
+    outline-color: #2f76f6;
+    box-shadow: 0 0 0 7px rgb(47 118 246 / 16%), 0 16px 42px rgb(24 79 166 / 16%);
+  }
+  100% {
+    outline-color: transparent;
+    box-shadow: 0 0 0 7px transparent, 0 16px 42px transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .focusTarget {
+    animation: ai-region-focus-fade 5.2s linear both;
+  }
+}

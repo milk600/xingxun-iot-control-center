@@ -1,0 +1,725 @@
+.root {
+  --spatial-border: #e3e8ef;
+  overflow: hidden;
+  color: #172033;
+  background: #fff;
+  border: 1px solid var(--spatial-border);
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgb(15 23 42 / 7%);
+}
+
+.toolbar {
+  display: flex;
+  min-height: 68px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  background: rgb(255 255 255 / 97%);
+  border-bottom: 1px solid var(--spatial-border);
+}
+
+.titleBlock,
+.toolbarActions,
+.layerTabs,
+.layerStatus,
+.poseMeta,
+.legend,
+.dimensionPanel,
+.dimensionPanel label {
+  display: flex;
+  align-items: center;
+}
+
+.titleBlock { min-width: max-content; gap: 10px; }
+.titleIcon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  color: #286ce1;
+  background: #edf4ff;
+  border-radius: 12px;
+}
+.titleBlock div { display: grid; gap: 1px; }
+.titleBlock h3 { margin: 0; color: #101828; font-size: 15px; line-height: 20px; }
+.titleBlock p { margin: 0; color: #7b8798; font-size: 12px; line-height: 17px; }
+
+.toolbarActions { justify-content: flex-end; gap: 7px; }
+.toolButton,
+.iconButton,
+.quietButton,
+.dimensionPanel button,
+.layerTab,
+.mapPrompt {
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.toolButton,
+.iconButton {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  color: #536175;
+  background: #f7f8fa;
+  border: 1px solid #e5e9ef;
+  border-radius: 11px;
+  font-size: 12px;
+  font-weight: 650;
+  transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+.toolButton { padding: 0 11px; }
+.iconButton { min-width: 40px; padding: 0 9px; }
+.iconButton span { color: #bd4037; font-size: 11px; }
+.toolButton:hover,
+.iconButton:hover { color: #245fbe; background: #f0f5fd; border-color: #cddcf2; }
+.toolButtonActive { color: #fff; background: #3478f6; border-color: #3478f6; }
+.toolButtonActive:hover { color: #fff; background: #2c6cdf; border-color: #2c6cdf; }
+
+.dimensionPanel {
+  position: relative;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #f8fafc;
+  border-bottom: 1px solid var(--spatial-border);
+}
+.dimensionPanel label {
+  min-height: 40px;
+  gap: 6px;
+  color: #5e6b7d;
+  font-size: 12px;
+  font-weight: 650;
+}
+.dimensionPanel input {
+  width: 76px;
+  height: 38px;
+  padding: 0 9px;
+  color: #182235;
+  background: #fff;
+  border: 1px solid #dce2ea;
+  border-radius: 9px;
+  outline: none;
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+}
+.dimensionPanel input:focus { border-color: #3478f6; box-shadow: 0 0 0 3px rgb(52 120 246 / 14%); }
+.dimensionPanel button {
+  min-height: 38px;
+  padding: 0 12px;
+  color: #fff;
+  background: #3478f6;
+  border: 0;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.dimensionPanel .quietButton { color: #657286; background: #e9edf2; }
+.dimensionPanel p { flex-basis: 100%; margin: 0; color: #bb4037; font-size: 12px; }
+
+.navigationPanel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr);
+  gap: 12px;
+  padding: 12px 16px;
+  background: #f8fafc;
+  border-bottom: 1px solid var(--spatial-border);
+}
+.navigationEditor,
+.navigationStatus {
+  min-width: 0;
+  padding: 12px;
+  background: #fff;
+  border: 1px solid #e1e7ef;
+  border-radius: 14px;
+}
+.navigationPanelTitle,
+.navigationPanelTitle > span,
+.navigationTools,
+.navigationMapMeta,
+.navigationStatus > div:first-child,
+.navigationActions {
+  display: flex;
+  align-items: center;
+}
+.navigationPanelTitle { gap: 10px; }
+.navigationPanelTitle > span {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  justify-content: center;
+  color: #286ce1;
+  background: #edf4ff;
+  border-radius: 10px;
+}
+.navigationPanelTitle > div { display: grid; gap: 2px; }
+.navigationPanelTitle strong { color: #172033; font-size: 13px; line-height: 18px; }
+.navigationPanelTitle small { color: #7a8799; font-size: 11px; line-height: 16px; }
+.navigationTools {
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 11px;
+}
+.navigationTools button,
+.navigationMapMeta button,
+.navigationActions button {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 10px;
+  color: #57667a;
+  background: #f7f9fb;
+  border: 1px solid #e2e7ee;
+  border-radius: 9px;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+.navigationTools button:hover,
+.navigationMapMeta button:hover,
+.navigationActions button:hover { color: #245fbe; background: #eef4fd; border-color: #cbdaf0; }
+.navigationTools .navigationToolActive { color: #fff; background: #3478f6; border-color: #3478f6; }
+.navigationTools .navigationToolActive:hover { color: #fff; background: #2c6cdf; border-color: #2c6cdf; }
+.navigationTools .navigationSaveButton { color: #2464cc; background: #edf4ff; border-color: #cdddf6; }
+.navigationTools .navigationDangerArmed { color: #fff; background: #c94c43; border-color: #c94c43; }
+.navigationMapMeta {
+  flex-wrap: wrap;
+  gap: 5px 12px;
+  margin-top: 10px;
+  color: #7b8798;
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+.navigationMapMeta button { min-height: 28px; margin-left: auto; padding-inline: 8px; }
+.navigationStatus {
+  --navigation-state: #94a3b8;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  border-color: color-mix(in srgb, var(--navigation-state) 25%, #e1e7ef);
+}
+.navigationStatus > div:first-child { min-width: 0; gap: 9px; }
+.navigationStatusDot {
+  width: 9px;
+  height: 9px;
+  flex: 0 0 9px;
+  background: var(--navigation-state);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--navigation-state) 14%, transparent);
+}
+.navigationStatus p { display: grid; min-width: 0; gap: 2px; margin: 0; }
+.navigationStatus strong { color: #263247; font-size: 12px; line-height: 17px; }
+.navigationStatus small { overflow: hidden; color: #7b8798; font-size: 11px; line-height: 16px; text-overflow: ellipsis; white-space: nowrap; }
+.navigationState_planning,
+.navigationState_planned { --navigation-state: #d79421; }
+.navigationState_running { --navigation-state: #3478f6; }
+.navigationState_completed,
+.navigationState_map-ready { --navigation-state: #2f9d68; }
+.navigationState_failed,
+.navigationState_stopped { --navigation-state: #d55349; }
+.navigationState_cancelled { --navigation-state: #7a8799; }
+.navigationProgress {
+  height: 6px;
+  overflow: hidden;
+  background: #e9eef5;
+  border-radius: 999px;
+}
+.navigationProgress > span { display: block; height: 100%; background: #3478f6; border-radius: inherit; transition: width 180ms linear; }
+.navigationActions { flex-wrap: wrap; gap: 6px; }
+.navigationActions .navigationStartButton { color: #fff; background: #3478f6; border-color: #3478f6; }
+.navigationActions .navigationStartButton:hover { color: #fff; background: #2c6cdf; border-color: #2c6cdf; }
+.navigationActions .navigationStopButton { color: #fff; background: #d34d43; border-color: #d34d43; }
+.navigationActions .navigationStopButton:hover { color: #fff; background: #bd4037; border-color: #bd4037; }
+.navigationTools button:disabled,
+.navigationMapMeta button:disabled,
+.navigationActions button:disabled,
+.toolButton:disabled,
+.iconButton:disabled {
+  cursor: not-allowed;
+  opacity: .5;
+}
+
+.layerScroller {
+  overflow-x: auto;
+  scrollbar-width: none;
+  background: #fff;
+  border-bottom: 1px solid var(--spatial-border);
+}
+.layerScroller::-webkit-scrollbar { display: none; }
+.layerTabs { width: max-content; min-width: 100%; gap: 4px; padding: 8px 12px; }
+.layerTab {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 12px;
+  color: #69768a;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 650;
+  white-space: nowrap;
+  scroll-snap-align: center;
+  transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+.layerTab:hover { color: var(--tab-accent); background: #f5f7fa; }
+.layerTabActive { color: var(--tab-accent); background: #f1f5fb; border-color: #d9e4f2; }
+
+.mapStage {
+  display: grid;
+  min-height: 500px;
+  place-items: center;
+  padding: 18px;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 45%, #162333, #070c12 72%);
+}
+.mapFrame {
+  position: relative;
+  height: 500px;
+  max-width: 100%;
+  overflow: hidden;
+  background: #030608;
+  border: 1px solid rgb(255 255 255 / 13%);
+  border-radius: 15px;
+  box-shadow: 0 20px 44px rgb(0 0 0 / 34%);
+  outline: none;
+  isolation: isolate;
+}
+.mapFrameCalibrating { cursor: crosshair; touch-action: none; box-shadow: 0 0 0 2px #4e8df8, 0 20px 44px rgb(0 0 0 / 34%); }
+.mapFrameEditing { cursor: crosshair; touch-action: none; box-shadow: 0 0 0 2px #4e8df8, 0 20px 44px rgb(0 0 0 / 34%); }
+.mapFrameCalibrating:focus-visible { box-shadow: 0 0 0 3px #fff, 0 0 0 6px #3478f6, 0 20px 44px rgb(0 0 0 / 34%); }
+.mapFrameEditing:focus-visible { box-shadow: 0 0 0 3px #fff, 0 0 0 6px #3478f6, 0 20px 44px rgb(0 0 0 / 34%); }
+.mapImage {
+  position: absolute;
+  z-index: 0;
+  max-width: none;
+  max-height: none;
+  user-select: none;
+  pointer-events: none;
+}
+.heatCanvas,
+.overlay { position: absolute; inset: 0; width: 100%; height: 100%; }
+.heatCanvas { z-index: 1; pointer-events: none; }
+.overlay { z-index: 2; overflow: hidden; pointer-events: none; }
+.checkpointLayer {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  pointer-events: none;
+}
+.checkpointMarker {
+  position: absolute;
+  display: flex;
+  max-width: 132px;
+  min-height: 32px;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px 3px 4px;
+  color: #172033;
+  background: rgb(255 255 255 / 94%);
+  border: 1px solid rgb(186 203 224 / 88%);
+  border-radius: 999px;
+  box-shadow: 0 5px 14px rgb(9 24 44 / 25%);
+  font: inherit;
+  font-size: 11px;
+  cursor: pointer;
+  transform: translate(-15px, -50%);
+  transform-origin: 15px 50%;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+.checkpointMarker > span {
+  display: grid;
+  width: 26px;
+  height: 26px;
+  flex: 0 0 26px;
+  place-items: center;
+  color: #fff;
+  background: #3478f6;
+  border-radius: 50%;
+}
+.checkpointMarker strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.checkpointMarker:hover,
+.checkpointMarkerSelected {
+  color: #164ea8;
+  background: #fff;
+  border-color: #6fa1f3;
+  box-shadow: 0 0 0 3px rgb(52 120 246 / 18%), 0 7px 18px rgb(9 24 44 / 28%);
+  transform: translate(-15px, -50%) scale(1.04);
+}
+.checkpointMarker:focus-visible {
+  outline: 3px solid #fff;
+  box-shadow: 0 0 0 6px #3478f6, 0 7px 18px rgb(9 24 44 / 28%);
+}
+.wallLine,
+.navigationRouteLine {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.wallLine { stroke: #ff7065; stroke-width: 5; filter: drop-shadow(0 2px 3px rgb(0 0 0 / 60%)); }
+.wallLineDraft { stroke: #ffd166; stroke-dasharray: 7 7; }
+.navigationRouteLine { stroke: #38a3ff; stroke-width: 6; filter: drop-shadow(0 2px 4px rgb(4 41 91 / 80%)); }
+.navigationGoal circle:first-child { fill: rgb(52 120 246 / 20%); stroke: #75b7ff; stroke-width: 4; vector-effect: non-scaling-stroke; }
+.navigationGoal circle:last-child { fill: #fff; stroke: #3478f6; stroke-width: 3; vector-effect: non-scaling-stroke; }
+.trackLine {
+  fill: none;
+  stroke: #79a9ff;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 2px 3px rgb(15 41 76 / 70%));
+}
+.samplePoint {
+  fill: var(--layer-accent);
+  stroke: #fff;
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 2px 3px rgb(0 0 0 / 45%));
+}
+.calibrationMarker circle { fill: rgb(255 255 255 / 14%); stroke: #fff; stroke-width: 3; vector-effect: non-scaling-stroke; }
+.calibrationMarker path { fill: #fff; stroke: #193156; stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.vehicleMarker circle { fill: rgb(52 120 246 / 26%); stroke: #8ab7ff; stroke-width: 4; vector-effect: non-scaling-stroke; }
+.vehicleMarker path { fill: #3478f6; stroke: #fff; stroke-width: 3; stroke-linejoin: round; vector-effect: non-scaling-stroke; filter: drop-shadow(0 3px 5px rgb(0 0 0 / 55%)); }
+.vehicleMarkerOutside circle { fill: rgb(224 69 59 / 24%); stroke: #ff8d84; }
+.vehicleMarkerOutside path { fill: #e44b42; }
+
+.layerSwitchStatus {
+  position: absolute;
+  z-index: 4;
+  top: 12px;
+  left: 50%;
+  padding: 7px 11px;
+  color: #eaf1fb;
+  background: rgb(11 18 27 / 82%);
+  border: 1px solid rgb(255 255 255 / 13%);
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgb(0 0 0 / 24%);
+  font-size: 11px;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  backdrop-filter: blur(12px);
+  pointer-events: none;
+  animation: layer-status-in 160ms cubic-bezier(.22, 1, .36, 1) both;
+}
+
+.calibrationHint,
+.mapPrompt {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  white-space: nowrap;
+  backdrop-filter: blur(16px);
+}
+
+@keyframes layer-status-in {
+  from { opacity: 0; transform: translate(-50%, -4px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.checkpointCard {
+  position: absolute;
+  z-index: 5;
+  right: 12px;
+  bottom: 12px;
+  display: grid;
+  width: min(330px, calc(100% - 24px));
+  gap: 9px;
+  padding: 11px;
+  color: #172033;
+  background: rgb(255 255 255 / 95%);
+  border: 1px solid rgb(220 228 238 / 92%);
+  border-radius: 14px;
+  box-shadow: 0 14px 36px rgb(2 12 27 / 32%);
+  backdrop-filter: blur(18px);
+  animation: checkpoint-card-in 200ms cubic-bezier(.2, .75, .25, 1) both;
+}
+.checkpointCard > div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.checkpointCard > div:first-child > span {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  place-items: center;
+  color: #286ce1;
+  background: #edf4ff;
+  border-radius: 10px;
+}
+.checkpointCard p {
+  display: grid;
+  gap: 1px;
+  margin: 0;
+}
+.checkpointCard strong { font-size: 13px; }
+.checkpointCard small { color: #7a8799; font-size: 10px; font-variant-numeric: tabular-nums; }
+.checkpointCard > div:last-child { flex-wrap: wrap; gap: 6px; }
+.checkpointCard button {
+  display: inline-flex;
+  min-height: 36px;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0 9px;
+  color: #506076;
+  background: #f7f9fb;
+  border: 1px solid #e0e6ee;
+  border-radius: 9px;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.checkpointCard button:first-child { color: #fff; background: #3478f6; border-color: #3478f6; }
+.checkpointCard button:disabled { cursor: not-allowed; opacity: .5; }
+.checkpointCard .checkpointDeleteArmed { color: #fff; background: #cc4c43; border-color: #cc4c43; }
+
+.checkpointDialogBackdrop {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgb(14 24 39 / 34%);
+  backdrop-filter: blur(4px);
+  animation: checkpoint-backdrop-in 180ms ease-out both;
+}
+.checkpointDialog {
+  display: grid;
+  width: min(410px, 100%);
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 13px;
+  padding: 20px;
+  color: #172033;
+  background: #fff;
+  border: 1px solid #e0e7f0;
+  border-radius: 18px;
+  box-shadow: 0 26px 70px rgb(15 23 42 / 28%);
+  animation: checkpoint-dialog-in 220ms cubic-bezier(.2, .82, .25, 1) both;
+}
+.checkpointDialogIcon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  color: #286ce1;
+  background: #edf4ff;
+  border-radius: 13px;
+}
+.checkpointDialog h4 { margin: 1px 0 3px; color: #101828; font-size: 16px; }
+.checkpointDialog > div > p { margin: 0; color: #7a8799; font-size: 12px; line-height: 18px; }
+.checkpointDialog label {
+  display: grid;
+  grid-column: 1 / -1;
+  gap: 7px;
+  color: #536175;
+  font-size: 12px;
+  font-weight: 700;
+}
+.checkpointDialog input {
+  width: 100%;
+  height: 46px;
+  padding: 0 13px;
+  color: #172033;
+  background: #f8fafc;
+  border: 1px solid #dce3ec;
+  border-radius: 11px;
+  outline: none;
+  font: inherit;
+  font-size: 14px;
+}
+.checkpointDialog input:focus { background: #fff; border-color: #3478f6; box-shadow: 0 0 0 3px rgb(52 120 246 / 14%); }
+.checkpointDialogError { grid-column: 1 / -1; margin: -3px 0 0; color: #bd4037; font-size: 12px; }
+.checkpointDialogActions {
+  display: flex;
+  grid-column: 1 / -1;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 2px;
+}
+.checkpointDialogActions button {
+  min-width: 88px;
+  min-height: 42px;
+  padding: 0 15px;
+  color: #59677a;
+  background: #f2f5f8;
+  border: 1px solid #e0e6ed;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.checkpointDialogActions button:last-child { color: #fff; background: #3478f6; border-color: #3478f6; }
+.checkpointDialogActions button:focus-visible,
+.checkpointCard button:focus-visible { outline: 2px solid #3478f6; outline-offset: 2px; }
+
+@keyframes checkpoint-dialog-in {
+  from { opacity: 0; transform: translateY(12px) scale(.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes checkpoint-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes checkpoint-card-in {
+  from { opacity: 0; transform: translateY(8px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.calibrationHint {
+  top: 13px;
+  min-height: 38px;
+  padding: 0 13px;
+  color: #fff;
+  background: rgb(19 30 45 / 78%);
+  border: 1px solid rgb(255 255 255 / 18%);
+  font-size: 12px;
+  font-weight: 650;
+  pointer-events: none;
+}
+.mapPrompt {
+  bottom: 18px;
+  min-height: 42px;
+  padding: 0 15px;
+  color: #fff;
+  background: rgb(32 86 176 / 86%);
+  border: 1px solid rgb(255 255 255 / 25%);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.footer {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 10px 16px;
+  background: #fff;
+  border-top: 1px solid var(--spatial-border);
+}
+.layerStatus { min-width: 0; gap: 8px; font-size: 12px; }
+.layerStatus strong { color: #263247; }
+.layerStatus > span:last-child { overflow: hidden; color: #7a8799; text-overflow: ellipsis; white-space: nowrap; }
+.statusDot { width: 8px; height: 8px; flex: 0 0 8px; background: var(--layer-accent); border-radius: 50%; }
+.poseMeta { gap: 14px; color: #7b8798; font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.legend { gap: 8px; color: #687589; font-size: 11px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.legend i { width: 108px; height: 8px; border-radius: 999px; box-shadow: inset 0 0 0 1px rgb(15 23 42 / 10%); }
+
+.toolButton:focus-visible,
+.iconButton:focus-visible,
+.dimensionPanel button:focus-visible,
+.layerTab:focus-visible,
+.mapPrompt:focus-visible {
+  outline: 2px solid #3478f6;
+  outline-offset: 2px;
+}
+.navigationTools button:focus-visible,
+.navigationMapMeta button:focus-visible,
+.navigationActions button:focus-visible {
+  outline: 2px solid #3478f6;
+  outline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+  .toolbar { align-items: flex-start; }
+  .toolbarActions { flex-wrap: wrap; }
+  .navigationPanel { grid-template-columns: 1fr; }
+  .mapStage { min-height: 460px; }
+  .mapFrame { height: 460px; }
+}
+
+@media (max-width: 620px) {
+  .root { border-radius: 16px; }
+  .toolbar { min-height: auto; align-items: stretch; flex-direction: column; gap: 10px; padding: 12px; }
+  .toolbarActions { display: grid; grid-template-columns: 1fr 1fr 44px 44px; width: 100%; gap: 6px; }
+  .toolButton,
+  .iconButton { min-height: 44px; }
+  .toolButton { padding-inline: 8px; }
+  .iconButton { min-width: 44px; }
+  .dimensionPanel { padding: 10px 12px; }
+  .dimensionPanel label { flex: 1 1 135px; }
+  .dimensionPanel input { flex: 1; min-width: 58px; }
+  .dimensionPanel button { min-height: 44px; flex: 1; }
+  .navigationPanel { gap: 8px; padding: 10px 12px; }
+  .navigationEditor,
+  .navigationStatus { padding: 11px; border-radius: 12px; }
+  .navigationTools button,
+  .navigationActions button { min-height: 44px; flex: 1 1 calc(33.333% - 6px); padding-inline: 8px; }
+  .navigationMapMeta button { min-height: 36px; margin-left: 0; }
+  .navigationPanelTitle small { line-height: 15px; }
+  .layerTabs { scroll-snap-type: x proximity; padding-inline: 8px; }
+  .layerTab { min-height: 44px; padding-inline: 11px; }
+  .mapStage { min-height: 430px; padding: 12px; }
+  .mapFrame { height: 430px; border-radius: 13px; }
+  .checkpointMarker {
+    min-height: 36px;
+    padding-right: 9px;
+  }
+  .checkpointCard { right: 8px; bottom: 8px; width: calc(100% - 16px); }
+  .checkpointCard button { min-height: 44px; }
+  .checkpointDialogBackdrop { align-items: end; padding: 12px; }
+  .checkpointDialog {
+    width: 100%;
+    padding: 18px;
+    border-radius: 18px 18px 14px 14px;
+  }
+  .checkpointDialogActions button { min-height: 46px; flex: 1; }
+  .footer { align-items: flex-start; flex-direction: column; gap: 7px; padding: 10px 12px; }
+  .layerStatus { width: 100%; }
+  .legend,
+  .poseMeta { width: 100%; justify-content: space-between; }
+  .legend i { flex: 1; }
+  .calibrationHint { max-width: calc(100% - 18px); white-space: normal; text-align: center; }
+}
+
+@media (max-width: 380px) {
+  .toolbarActions { grid-template-columns: 1fr 1fr; }
+  .iconButton { width: 100%; }
+  .mapStage { min-height: 400px; padding-inline: 8px; }
+  .mapFrame { height: 400px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toolButton,
+  .iconButton,
+  .layerTab,
+  .navigationTools button,
+  .navigationMapMeta button,
+  .navigationActions button,
+  .navigationProgress > span,
+  .checkpointMarker { transition: none; }
+  .checkpointDialogBackdrop,
+  .checkpointDialog,
+  .checkpointCard,
+  .layerSwitchStatus { animation: none; }
+}

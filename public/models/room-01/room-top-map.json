@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "sceneId": "room-01",
+  "sceneRevision": 1,
+  "width": 1600,
+  "height": 1000,
+  "contentBounds": {
+    "left": 0.08,
+    "top": 0.08,
+    "width": 0.84,
+    "height": 0.84
+  },
+  "suggestedRoom": {
+    "widthM": 8,
+    "heightM": 5
+  },
+  "projection": {
+    "direction": [
+      0,
+      1,
+      0
+    ],
+    "up": [
+      0,
+      0,
+      -1
+    ],
+    "right": [
+      1,
+      0,
+      0
+    ]
+  },
+  "generatedFrom": "demo-room.ply",
+  "vertexCount": 2920
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="connection_horizontal_margin">180dp</dimen>
+</resources>

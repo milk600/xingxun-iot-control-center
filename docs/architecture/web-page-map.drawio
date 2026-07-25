@@ -1,0 +1,29 @@
+<mxGraphModel adaptiveColors="auto" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1600" pageHeight="900">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <mxCell id="login" value="登录页&#xa;/login" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#5b8def;fontStyle=1;fontSize=18;" vertex="1" parent="1"><mxGeometry x="40" y="320" width="190" height="90" as="geometry"/></mxCell>
+    <mxCell id="shell" value="AppShell&#xa;会话、侧栏/底栏、页面过渡" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1d1d1f;fontColor=#ffffff;strokeColor=#1d1d1f;fontStyle=1;fontSize=19;" vertex="1" parent="1"><mxGeometry x="300" y="300" width="260" height="130" as="geometry"/></mxCell>
+    <mxCell id="overview" value="控制概览&#xa;/" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=17;" vertex="1" parent="1"><mxGeometry x="660" y="40" width="220" height="80" as="geometry"/></mxCell>
+    <mxCell id="twin" value="空间孪生&#xa;/digital-twin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#101114;fontColor=#ffffff;strokeColor=#4f81bd;fontSize=17;" vertex="1" parent="1"><mxGeometry x="980" y="40" width="250" height="80" as="geometry"/></mxCell>
+    <mxCell id="vehicle" value="小车遥控&#xa;/vehicle" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=17;" vertex="1" parent="1"><mxGeometry x="660" y="180" width="220" height="80" as="geometry"/></mxCell>
+    <mxCell id="monitor" value="数据监测&#xa;/monitoring" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=17;" vertex="1" parent="1"><mxGeometry x="980" y="180" width="250" height="80" as="geometry"/></mxCell>
+    <mxCell id="alerts" value="告警管理&#xa;/alerts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d96c62;fontSize=17;" vertex="1" parent="1"><mxGeometry x="660" y="320" width="220" height="80" as="geometry"/></mxCell>
+    <mxCell id="integrations" value="连接管理&#xa;/integrations" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=17;" vertex="1" parent="1"><mxGeometry x="980" y="320" width="250" height="80" as="geometry"/></mxCell>
+    <mxCell id="settings" value="系统设置&#xa;/settings" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=17;" vertex="1" parent="1"><mxGeometry x="660" y="460" width="220" height="80" as="geometry"/></mxCell>
+    <mxCell id="ai" value="AI 浮动交互栏&#xa;命名页面 + 白名单动作 + 结果反馈" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef9f3;strokeColor=#4fa477;fontStyle=1;fontSize=18;" vertex="1" parent="1"><mxGeometry x="980" y="470" width="360" height="110" as="geometry"/></mxCell>
+    <mxCell id="responsive" value="响应式规则&#xa;桌面侧栏｜窄屏底部导航｜减少动态效果" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff7e8;strokeColor=#d6a341;fontSize=17;" vertex="1" parent="1"><mxGeometry x="510" y="650" width="500" height="90" as="geometry"/></mxCell>
+    <mxCell id="e1" edge="1" source="login" target="shell" parent="1" value="认证成功" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;strokeColor=#5b8def;strokeWidth=2;html=1;fontSize=14;"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e2" edge="1" source="shell" target="overview" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;strokeColor=#60748a;strokeWidth=2;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e3" edge="1" source="shell" target="vehicle" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;strokeColor=#60748a;strokeWidth=2;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e4" edge="1" source="shell" target="monitor" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;strokeColor=#60748a;strokeWidth=2;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e5" edge="1" source="shell" target="alerts" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;strokeColor=#60748a;strokeWidth=2;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e6" edge="1" source="shell" target="integrations" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;strokeColor=#60748a;strokeWidth=2;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e7" edge="1" source="shell" target="settings" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;strokeColor=#60748a;strokeWidth=2;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e8" edge="1" source="overview" target="twin" parent="1" value="空间下钻" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;strokeColor=#4f81bd;strokeWidth=2;html=1;fontSize=14;"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e9" edge="1" source="ai" target="monitor" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;dashed=1;strokeColor=#4fa477;strokeWidth=2;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e10" edge="1" source="ai" target="vehicle" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;dashed=1;strokeColor=#4fa477;strokeWidth=2;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e11" edge="1" source="ai" target="alerts" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;dashed=1;strokeColor=#4fa477;strokeWidth=2;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e12" edge="1" source="responsive" target="shell" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;strokeColor=#d6a341;strokeWidth=2;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+  </root>
+</mxGraphModel>

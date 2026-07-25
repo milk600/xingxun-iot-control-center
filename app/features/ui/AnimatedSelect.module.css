@@ -1,0 +1,272 @@
+.root {
+  width: 100%;
+  min-width: 0;
+}
+
+.trigger {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  min-height: 42px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 11px 0 12px;
+  color: #25344a;
+  text-align: left;
+  background: #f8fafb;
+  border: 1px solid #dfe5eb;
+  border-radius: var(--app-radius-compact, 10px);
+  cursor: pointer;
+  transition:
+    color var(--motion-duration-quick, 200ms) ease,
+    background-color var(--motion-duration-quick, 200ms) ease,
+    border-color var(--motion-duration-quick, 200ms) ease,
+    box-shadow var(--motion-duration-quick, 200ms) ease;
+}
+
+.trigger:hover:not(:disabled) {
+  color: #1f5fae;
+  background: #fff;
+  border-color: #c8d8ef;
+}
+
+.trigger[data-open] {
+  color: #1f5fae;
+  background: #fff;
+  border-color: #9fc0f3;
+  box-shadow: 0 0 0 3px rgb(52 120 239 / 10%);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid #3478f6;
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+.trigger:disabled {
+  color: #98a3b3;
+  background: #f2f4f6;
+  cursor: not-allowed;
+}
+
+.compact .trigger {
+  min-height: 40px;
+  color: #1d1d1f;
+  background: #fff;
+  border-color: rgb(15 23 42 / 12%);
+  border-radius: var(--app-radius-control, 14px);
+}
+
+.value {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 12px;
+  font-weight: 550;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.compact .value {
+  font-weight: 500;
+}
+
+.chevron {
+  flex: 0 0 auto;
+  color: #7e8a9b;
+  transition:
+    color var(--motion-duration-quick, 200ms) ease,
+    transform var(--motion-duration-control, 225ms) cubic-bezier(.22, 1, .36, 1);
+}
+
+.trigger[data-open] .chevron {
+  color: #3478ef;
+  transform: rotate(-180deg);
+}
+
+.menu {
+  position: fixed;
+  z-index: 180;
+  display: grid;
+  gap: 3px;
+  padding: 6px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  color: #25344a;
+  background: #fff;
+  border: 1px solid #e1e7ee;
+  border-radius: var(--app-radius-control, 14px);
+  box-shadow: 0 18px 54px rgb(20 31 50 / 16%);
+  transform-origin: center top;
+  animation: selectMenuIn var(--motion-duration-quick, 200ms) cubic-bezier(.16, 1, .3, 1) both;
+  overscroll-behavior: contain;
+}
+
+.menu[data-positioned="false"] {
+  visibility: hidden;
+}
+
+.menu[data-placement="top"] {
+  transform-origin: center bottom;
+  animation-name: selectMenuInTop;
+}
+
+.menuClosing[data-placement="bottom"] {
+  pointer-events: none;
+  animation: selectMenuOut var(--motion-duration-subtle, 125ms) cubic-bezier(.4, 0, 1, 1) both;
+}
+
+.menuClosing[data-placement="top"] {
+  pointer-events: none;
+  animation: selectMenuOutTop var(--motion-duration-subtle, 125ms) cubic-bezier(.4, 0, 1, 1) both;
+}
+
+.option {
+  display: grid;
+  width: 100%;
+  min-height: 44px;
+  grid-template-columns: minmax(0, 1fr) 24px;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 8px 7px 10px;
+  color: #526176;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition:
+    color var(--motion-duration-quick, 200ms) ease,
+    background-color var(--motion-duration-quick, 200ms) ease,
+    transform var(--motion-duration-quick, 200ms) cubic-bezier(.22, 1, .36, 1);
+}
+
+.option > span {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+
+.option strong {
+  overflow: hidden;
+  color: inherit;
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.45;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.option small {
+  overflow: hidden;
+  color: #8995a5;
+  font-size: 11px;
+  font-weight: 450;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.option > i {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  color: #3478ef;
+  background: transparent;
+  border-radius: 8px;
+  font-style: normal;
+}
+
+.option[data-active] {
+  color: #33445c;
+  background: #f4f7fb;
+}
+
+.option[data-selected] {
+  color: #245fac;
+  background: #edf4ff;
+}
+
+.option[data-selected] small {
+  color: #6382ad;
+}
+
+.option[data-selected] > i {
+  background: rgb(52 120 239 / 9%);
+  animation: selectCheckIn var(--motion-duration-quick, 200ms) cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.option:focus-visible {
+  outline: 2px solid #3478f6;
+  outline-offset: -2px;
+  box-shadow: none;
+}
+
+.menu[data-tone="dark"] {
+  color: #f5f5f7;
+  background: #1c1c1e;
+  border-color: rgb(255 255 255 / 14%);
+  box-shadow: 0 18px 54px rgb(0 0 0 / 48%);
+}
+
+.menu[data-tone="dark"] .option {
+  color: #d1d1d6;
+}
+
+.menu[data-tone="dark"] .option small {
+  color: #98989d;
+}
+
+.menu[data-tone="dark"] .option[data-active] {
+  color: #f5f5f7;
+  background: rgb(255 255 255 / 8%);
+}
+
+.menu[data-tone="dark"] .option[data-selected] {
+  color: #64d2ff;
+  background: rgb(10 132 255 / 18%);
+}
+
+:global([data-immersive="true"]) .compact .trigger {
+  color: #f5f5f7;
+  background: rgb(255 255 255 / 8%);
+  border-color: rgb(255 255 255 / 13%);
+}
+
+:global([data-immersive="true"]) .compact .trigger:hover:not(:disabled),
+:global([data-immersive="true"]) .compact .trigger[data-open] {
+  color: #fff;
+  background: rgb(255 255 255 / 12%);
+  border-color: rgb(100 210 255 / 34%);
+}
+
+@keyframes selectMenuIn {
+  from { opacity: 0; transform: translate3d(0, -7px, 0) scale(.975); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes selectMenuInTop {
+  from { opacity: 0; transform: translate3d(0, 7px, 0) scale(.975); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes selectMenuOut {
+  from { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+  to { opacity: 0; transform: translate3d(0, -4px, 0) scale(.985); }
+}
+
+@keyframes selectMenuOutTop {
+  from { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+  to { opacity: 0; transform: translate3d(0, 4px, 0) scale(.985); }
+}
+
+@keyframes selectCheckIn {
+  from { opacity: 0; transform: scale(.72); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trigger, .chevron, .option { transition: none; }
+  .menu, .menuClosing, .option[data-selected] > i { animation-duration: 0s; }
+}

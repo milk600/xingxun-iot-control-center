@@ -1,0 +1,28 @@
+<mxGraphModel adaptiveColors="auto" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1600" pageHeight="900">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <mxCell id="n1" value="STM32 采样并上报&#xa;六路 Environment 属性" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef9f3;strokeColor=#4fa477;fontSize=17;" vertex="1" parent="1"><mxGeometry x="40" y="170" width="240" height="90" as="geometry"/></mxCell>
+    <mxCell id="n2" value="华为云 IoTDA&#xa;更新设备影子" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#edf4ff;strokeColor=#5b8def;fontSize=17;" vertex="1" parent="1"><mxGeometry x="350" y="170" width="220" height="90" as="geometry"/></mxCell>
+    <mxCell id="n3" value="服务端 Provider&#xa;鉴权、读取、字段映射" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff7e8;strokeColor=#d6a341;fontSize=17;" vertex="1" parent="1"><mxGeometry x="650" y="170" width="250" height="90" as="geometry"/></mxCell>
+    <mxCell id="n4" value="Snapshot 契约&#xa;slots + vehicle + partialErrors" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f6efff;strokeColor=#9a76c7;fontSize=17;" vertex="1" parent="1"><mxGeometry x="980" y="170" width="280" height="90" as="geometry"/></mxCell>
+    <mxCell id="n5" value="前端 Provider&#xa;轮询去重与新鲜度判断" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#edf4ff;strokeColor=#5b8def;fontSize=17;" vertex="1" parent="1"><mxGeometry x="1310" y="170" width="250" height="90" as="geometry"/></mxCell>
+    <mxCell id="fresh" value="观测时间是否有效且新鲜？" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#60748a;fontSize=16;" vertex="1" parent="1"><mxGeometry x="1325" y="350" width="220" height="110" as="geometry"/></mxCell>
+    <mxCell id="live" value="更新指标卡、曲线与空间图层&#xa;状态：实时" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef9f3;strokeColor=#4fa477;fontSize=17;" vertex="1" parent="1"><mxGeometry x="1120" y="560" width="300" height="90" as="geometry"/></mxCell>
+    <mxCell id="stale" value="保留最近有效值并标注状态&#xa;陈旧 / 离线 / 暂无数据 / 读取错误" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff0ee;strokeColor=#d96c62;fontSize=17;" vertex="1" parent="1"><mxGeometry x="1450" y="560" width="300" height="90" as="geometry"/></mxCell>
+    <mxCell id="history" value="智能网关后台记录器&#xa;按 observedAt + slotId 去重" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef9f3;strokeColor=#4fa477;fontSize=17;" vertex="1" parent="1"><mxGeometry x="650" y="410" width="300" height="90" as="geometry"/></mxCell>
+    <mxCell id="db" value="SQLite WAL&#xa;历史、质量事件、告警工单" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#4fa477;fontSize=17;" vertex="1" parent="1"><mxGeometry x="680" y="600" width="240" height="90" as="geometry"/></mxCell>
+    <mxCell id="chart" value="历史查询与确定性统计&#xa;趋势、覆盖率、相关性、空间分布" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#edf4ff;strokeColor=#5b8def;fontSize=17;" vertex="1" parent="1"><mxGeometry x="290" y="600" width="300" height="90" as="geometry"/></mxCell>
+    <mxCell id="note" value="设计原则：浏览器轮询时间不替代设备观测时间；局部链路失败不阻断其他页面和车辆急停。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f7;strokeColor=#b8b8bd;fontSize=16;" vertex="1" parent="1"><mxGeometry x="300" y="760" width="1000" height="70" as="geometry"/></mxCell>
+    <mxCell id="e1" edge="1" source="n1" target="n2" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;strokeColor=#60748a;strokeWidth=2;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e2" edge="1" source="n2" target="n3" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;strokeColor=#60748a;strokeWidth=2;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e3" edge="1" source="n3" target="n4" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;strokeColor=#60748a;strokeWidth=2;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e4" edge="1" source="n4" target="n5" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;strokeColor=#60748a;strokeWidth=2;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e5" edge="1" source="n5" target="fresh" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;strokeColor=#60748a;strokeWidth=2;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e6" value="是" edge="1" source="fresh" target="live" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;strokeColor=#4fa477;strokeWidth=2;html=1;fontSize=15;"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e7" value="否" edge="1" source="fresh" target="stale" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;strokeColor=#d96c62;strokeWidth=2;html=1;fontSize=15;"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e8" edge="1" source="n3" target="history" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;strokeColor=#4fa477;strokeWidth=2;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e9" edge="1" source="history" target="db" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;strokeColor=#4fa477;strokeWidth=2;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e10" edge="1" source="db" target="chart" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;strokeColor=#5b8def;strokeWidth=2;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+  </root>
+</mxGraphModel>

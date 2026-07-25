@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="title">
+  <title id="title">合成 AI 辅助研判界面示意图</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1440" y2="900"><stop stop-color="#f8faff"/><stop offset="1" stop-color="#eef2fa"/></linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#4b8df8"/><stop offset="1" stop-color="#755bd7"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#425f88" flood-opacity=".13"/></filter>
+  </defs>
+  <rect width="1440" height="900" fill="url(#bg)"/>
+  <text x="56" y="76" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="36" font-weight="700" fill="#182338">AI 辅助研判</text>
+  <text x="56" y="110" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="15" fill="#7d8a9d">统计先行 · 证据可追溯 · 操作需授权</text>
+  <rect x="56" y="146" width="880" height="690" rx="28" fill="#fff" filter="url(#shadow)"/>
+  <text x="90" y="198" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="20" font-weight="700" fill="#1d2a40">环境趋势证据</text>
+  <g transform="translate(90 232)" font-family="Arial,'Microsoft YaHei',sans-serif">
+    <g><rect width="180" height="118" rx="18" fill="#f2f6fd"/><text x="20" y="36" font-size="14" fill="#78869a">温度</text><text x="20" y="80" font-size="31" font-weight="700" fill="#1c2940">24.1°C</text></g>
+    <g transform="translate(196)"><rect width="180" height="118" rx="18" fill="#f2faf8"/><text x="20" y="36" font-size="14" fill="#78869a">湿度</text><text x="20" y="80" font-size="31" font-weight="700" fill="#1c2940">47%</text></g>
+    <g transform="translate(392)"><rect width="180" height="118" rx="18" fill="#fff7ec"/><text x="20" y="36" font-size="14" fill="#78869a">TVOC</text><text x="20" y="80" font-size="31" font-weight="700" fill="#1c2940">0.14</text></g>
+    <g transform="translate(588)"><rect width="180" height="118" rx="18" fill="#f3f0ff"/><text x="20" y="36" font-size="14" fill="#78869a">CO₂</text><text x="20" y="80" font-size="31" font-weight="700" fill="#1c2940">604</text></g>
+  </g>
+  <g stroke="#e5eaf2" stroke-width="2"><path d="M98 440H890"/><path d="M98 520H890"/><path d="M98 600H890"/><path d="M98 680H890"/></g>
+  <path d="M102 646C196 632 252 578 338 590S472 548 548 560 662 498 744 520 834 478 886 454" fill="none" stroke="url(#accent)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M102 620C205 604 282 625 352 588S490 610 558 572 706 596 886 540" fill="none" stroke="#63c7b4" stroke-width="5" stroke-linecap="round" opacity=".85"/>
+  <rect x="970" y="146" width="414" height="690" rx="28" fill="#fff" filter="url(#shadow)"/>
+  <rect x="998" y="176" width="358" height="70" rx="18" fill="url(#accent)"/>
+  <circle cx="1034" cy="211" r="19" fill="#fff" opacity=".22"/><text x="1025" y="219" font-family="Arial" font-size="22" fill="#fff">✦</text>
+  <text x="1066" y="217" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="20" font-weight="700" fill="#fff">智能中枢</text>
+  <g font-family="Arial,'Microsoft YaHei',sans-serif">
+    <text x="1002" y="290" font-size="14" fill="#7b899c">已引用证据</text>
+    <rect x="998" y="310" width="358" height="88" rx="16" fill="#f4f7fc"/><text x="1018" y="344" font-size="15" fill="#53647a">过去 24 小时 · 6 路遥测</text><text x="1018" y="373" font-size="15" fill="#53647a">覆盖率 100% · 无采样缺口</text>
+    <text x="1002" y="448" font-size="14" fill="#7b899c">公开结论</text>
+    <rect x="998" y="468" width="358" height="154" rx="16" fill="#edf3ff" stroke="#cbdcff"/>
+    <text x="1018" y="508" font-size="18" font-weight="700" fill="#254f9f">指标总体稳定</text>
+    <text x="1018" y="542" font-size="15" fill="#53647a">波动处于演示阈值范围内。</text>
+    <text x="1018" y="572" font-size="15" fill="#53647a">建议继续观察并核对现场状态。</text>
+    <rect x="998" y="658" width="168" height="54" rx="15" fill="#eef2f7"/><text x="1038" y="691" font-size="16" fill="#5e6d80">结束讲解</text>
+    <rect x="1180" y="658" width="176" height="54" rx="15" fill="#3678ee"/><text x="1235" y="691" font-size="16" fill="#fff">继续</text>
+    <text x="1002" y="776" font-size="13" fill="#7b899c">AI 不显示隐藏推理，不绕过权限。</text>
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title">
+  <title id="title">危化智巡项目标识</title>
+  <defs>
+    <linearGradient id="bg" x1="20" y1="12" x2="142" y2="150" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5b8cff"/>
+      <stop offset="1" stop-color="#1260d8"/>
+    </linearGradient>
+    <linearGradient id="signal" x1="48" y1="38" x2="114" y2="122" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff"/>
+      <stop offset="1" stop-color="#dce9ff"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="144" height="144" rx="38" fill="url(#bg)"/>
+  <path d="M80 36c-24.3 0-44 19.7-44 44 0 14.2 6.7 26.8 17.2 34.8" fill="none" stroke="url(#signal)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M80 52c-15.5 0-28 12.5-28 28 0 8.7 4 16.5 10.2 21.6" fill="none" stroke="url(#signal)" stroke-width="8" stroke-linecap="round" opacity=".82"/>
+  <circle cx="80" cy="80" r="9" fill="#fff"/>
+  <path d="M80 80 122 50" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+  <path d="m80 100 24 11v12c0 12-10.2 20.7-24 25-13.8-4.3-24-13-24-25v-12l24-11Z" fill="#0b3f9d" opacity=".82"/>
+  <path d="m68 123 8 8 17-19" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
