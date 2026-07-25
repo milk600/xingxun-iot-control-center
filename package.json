@@ -43,7 +43,7 @@
     "android:release": "npm run build:android-web && android\\gradlew.bat -p android lintRelease assembleRelease",
     "android:share": "npm run android:release",
     "delivery:windows": "npm run build && npm run build:android-web && android\\gradlew.bat -p android --no-daemon --max-workers=1 assembleRelease && node scripts/package-windows-delivery.mjs",
-    "test": "npm run build && node --test tests/rendered-html.test.mjs",
+    "test": "npm run build && node --import tsx --test tests/rendered-html.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern .tools",
     "db:generate": "drizzle-kit generate"
   },
