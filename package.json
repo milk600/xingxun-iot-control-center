@@ -48,13 +48,13 @@
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
-    "@huaweicloud/huaweicloud-sdk-core": "^3.1.206",
-    "@huaweicloud/huaweicloud-sdk-iotda": "^3.1.206",
+    "@huaweicloud/huaweicloud-sdk-core": "^3.1.207",
+    "@huaweicloud/huaweicloud-sdk-iotda": "^3.1.207",
     "@sparkjsdev/spark": "2.1.0",
     "drizzle-orm": "0.45.2",
     "echarts": "^6.1.0",
-    "lucide-react": "^1.24.0",
-    "next": "16.2.11",
+    "lucide-react": "^1.27.0",
+    "next": "16.2.12",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "three": "0.185.1",
